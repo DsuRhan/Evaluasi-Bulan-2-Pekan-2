@@ -9,12 +9,12 @@ let listBuku = [
 let nextId = listBuku.length + 1;
 //Add New ID everytime a new book get added
 export function tambahBuku(judul, penulis, tahun) {
-    if (judul !== null && penulis !== null && tahun !== null) {
+    if (judul !== null && judul !== undefined && penulis !== null && penulis !== undefined && tahun !== null && tahun !== undefined) {
         const newBuku = { id: nextId++, judul, penulis, tahun, tersedia: true };
         listBuku.push(newBuku);
         return newBuku;
     } else {
-        return console.log("Mohon Masukkan judul, penulis, serta tahun terbit")
+        console.log("Mohon Masukkan judul, penulis, serta tahun terbit")
     };
     return null
 };
@@ -59,7 +59,7 @@ export function lihatBukuTersedia() {
 };
 // Tambah banyak buku sekaligus dengan rest parameter
 export function tambahBanyakBuku(...daftarBukuBaru) {
-    if (daftarBukuBaru !== null) {
+    if (daftarBukuBaru !== null && daftarBukuBaru !== undefined) {
         const bukuDitambahkan = [];
         daftarBukuBaru.forEach(({ judul, penulis, tahun }) => {
             const bukuBaru = { id: nextId++, judul, penulis, tahun, tersedia: true };
@@ -68,8 +68,8 @@ export function tambahBanyakBuku(...daftarBukuBaru) {
 
         });
         console.log(`${daftarBukuBaru.length} buku berhasil ditambahkan`)
-        return bukuDitambahkan;
     } else {
         return console.log("Mohon Tambahkan judul, penulis, dan tahun terbit")
     }
+
 }

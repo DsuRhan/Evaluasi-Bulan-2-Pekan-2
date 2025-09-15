@@ -22,3 +22,5 @@ tambahBanyakBuku(
     { judul: "Buku B", penulis: "Penulis B", tahun: 2021 }
 );
 lihatBuku();
+tambahBuku();
+tambahBanyakBuku();
