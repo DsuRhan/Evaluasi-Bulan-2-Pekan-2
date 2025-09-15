@@ -9,9 +9,14 @@ let listBuku = [
 let nextId = listBuku.length + 1;
 //Add New ID everytime a new book get added
 export function tambahBuku(judul, penulis, tahun) {
-    const newBuku = { id: nextId++, judul, penulis, tahun, tersedia: true };
-    listBuku.push(newBuku);
-    return newBuku;
+    if (judul !== null && penulis !== null && tahun !== null) {
+        const newBuku = { id: nextId++, judul, penulis, tahun, tersedia: true };
+        listBuku.push(newBuku);
+        return newBuku;
+    } else {
+        return console.log("Mohon Masukkan judul, penulis, serta tahun terbit")
+    };
+    return null
 };
 //Tampilkan BUku
 export function lihatBuku() {
@@ -54,13 +59,17 @@ export function lihatBukuTersedia() {
 };
 // Tambah banyak buku sekaligus dengan rest parameter
 export function tambahBanyakBuku(...daftarBukuBaru) {
-    const bukuDitambahkan = [];
-    daftarBukuBaru.forEach(({ judul, penulis, tahun }) => {
-        const bukuBaru = { id: nextId++, judul, penulis, tahun, tersedia: true };
-        listBuku.push(bukuBaru);
-        bukuDitambahkan.push(bukuBaru);
+    if (daftarBukuBaru !== null) {
+        const bukuDitambahkan = [];
+        daftarBukuBaru.forEach(({ judul, penulis, tahun }) => {
+            const bukuBaru = { id: nextId++, judul, penulis, tahun, tersedia: true };
+            listBuku.push(bukuBaru);
+            bukuDitambahkan.push(bukuBaru);
 
-    });
-    console.log(`${daftarBukuBaru.length} buku berhasil ditambahkan`)
-    return bukuDitambahkan;
+        });
+        console.log(`${daftarBukuBaru.length} buku berhasil ditambahkan`)
+        return bukuDitambahkan;
+    } else {
+        return console.log("Mohon Tambahkan judul, penulis, dan tahun terbit")
+    }
 }
